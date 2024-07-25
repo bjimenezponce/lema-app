@@ -1,0 +1,12 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "semi": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ]
+  }
+}
