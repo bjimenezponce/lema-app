@@ -1,6 +1,5 @@
-import React from "react";
 import SignInForm from "@/components/signin/SignInForm";
-import Link from "next/link";
+import SignUpForm from "@/components/signin/SignUpForm";
 
 interface Props {
   searchParams: {
@@ -9,11 +8,14 @@ interface Props {
 }
 
 const SigninPage = ({ searchParams }: Props) => {
+  
+
   return (
     <section className="w-full">
       <SignInForm callbackUrl={searchParams.callbackUrl} />
       {/* <Link href={"/auth/forgotPassword"}>Forgot Your Password?</Link> */}
-      <Link href={"signup"}> registrase</Link>
+      {/* <Link href={"/auth/signup"}> registrar usuario</Link> */}
+      <SignUpForm/>
     </section>
   );
 };
