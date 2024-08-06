@@ -45,7 +45,7 @@ const SignUpEmail: React.FC = () => {
         }`} // Cambia el color del borde si el correo no es válido
       />
       {!isEmailValido && (
-        <p className="text-red-500 text-xs mt-1">
+        <p className="text-red-500 text-xs mt-1 mb-2">
           Por favor, ingresa un correo válido.
         </p>
       )}

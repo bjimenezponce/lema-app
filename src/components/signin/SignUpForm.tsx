@@ -5,6 +5,7 @@ import SignUpModal from "../signup/SignUpModal";
 import { Button } from "@material-tailwind/react";
 import SignUpEmail from "../signup/SignUpEmail";
 import SignUpRegister from "../signup/SignUpResgister";
+import SignUpJobStatus from "../signup/SignUpJobStatus";
 
 const SignUpForm = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -31,6 +32,7 @@ const SignUpForm = () => {
       <SignUpModal isOpen={modalIsOpen} onClose={closeModal}>
         <SignUpRegister />
         <SignUpEmail />
+        <SignUpJobStatus />
       </SignUpModal>
     </>
   );
