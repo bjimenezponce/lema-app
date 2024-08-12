@@ -1,23 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import PatternPng from "../../../public/img/pattern.png";
+import SignUpData from "./SignUpData";
 
-const SignUpEmail: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
+interface SignUpEmailProps {
+  email: string;
+  onChange: (field: keyof SignUpData, value: string) => void;
+}
+
+const SignUpEmail: React.FC<SignUpEmailProps> = ({ email, onChange }) => {
   const [isEmailValido, setIsEmailValido] = useState<boolean>(true);
 
-  //funcion para validar que el correo ingresado es una expresion regular
+  // Función para validar el email
   const validarEmail = (email: string): boolean => {
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailValido.test(email);
   };
 
+  useEffect(() => {
+    setIsEmailValido(validarEmail(email));
+  }, [email]);
+
   //manejador de los cambios del input
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newEmail = event.target.value;
-    setEmail(newEmail);
 
-    // Valida el correo mientras el usuario escribe
+    //llamada a la funcion de cambio para actualizar el estado del componente
+    onChange("email", newEmail);
+
+    // Validación del email cada vez que cambia
     setIsEmailValido(validarEmail(newEmail));
   };
   return (
@@ -37,7 +48,7 @@ const SignUpEmail: React.FC = () => {
         id="email"
         value={email}
         onChange={handleEmailChange} // Asigna el manejador de cambios al input
-        placeholder="DoeJhon@email.com"
+        placeholder="JhonDoe@email.com"
         className={`w-42 mt-2 text-center border 
         border-gray-300 rounded-md mb-2 shadow-md 
         shadow-indigo-500/50 focus:outline-none ${
